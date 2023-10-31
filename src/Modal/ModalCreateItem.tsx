@@ -1,6 +1,5 @@
 /* VENDOR */
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 /* APPLICATION */
@@ -12,6 +11,7 @@ import { ModalTextarea } from "./ModalTextarea";
 import { ModalFooter } from "./ModalFooter";
 import { tasksAdded } from "../features/tasksSlice";
 import { categoriesAdded } from "../features/categoriesSlice";
+import { useAppDispatch } from "../app/hooks";
 
 interface ModalCreateItemProps {
   active: boolean;
@@ -22,7 +22,7 @@ export const ModalCreateItem: React.FC<ModalCreateItemProps> = ({
   active,
   setActive,
 }) => {
-  const dispatch = useDispatch(),
+  const dispatch = useAppDispatch(),
     { pathname } = useLocation(),
     isCategories = pathname.includes("categories"),
     [name, setName] = useState(""),

@@ -1,5 +1,4 @@
 /* VENDOR */
-import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 /* APPLICATION */
@@ -9,6 +8,7 @@ import { ModalText } from "./ModalText";
 import { ModalFooter } from "./ModalFooter";
 import { tasksRemoved, tasksClearedCategories } from "../features/tasksSlice";
 import { categoriesRemoved } from "../features/categoriesSlice";
+import { useAppDispatch } from "../app/hooks";
 
 interface ModalRemoveItemProps {
   item: {
@@ -26,7 +26,7 @@ export const ModalRemoveItem: React.FC<ModalRemoveItemProps> = ({
   active,
   setActive,
 }) => {
-  const dispatch = useDispatch(),
+  const dispatch = useAppDispatch(),
     { pathname } = useLocation(),
     isCategories = pathname.includes("categories"),
     text = `Вы уверены, что хотите удалить ${isCategories ? "категорию" : "задачу"} "${item.name}"?`;

@@ -1,6 +1,5 @@
 /* VENDOR */
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 /* APPLICATION */
@@ -12,6 +11,7 @@ import { ModalTextarea } from "./ModalTextarea";
 import { ModalFooter } from "./ModalFooter";
 import { tasksUpdated } from "../features/tasksSlice";
 import { categoriesUpdated } from "../features/categoriesSlice";
+import { useAppDispatch } from "../app/hooks";
 
 interface ModalEditItemProps {
   item: {
@@ -29,7 +29,7 @@ export const ModalEditItem: React.FC<ModalEditItemProps> = ({
   active,
   setActive,
 }) => {
-  const dispatch = useDispatch(),
+  const dispatch = useAppDispatch(),
     { pathname } = useLocation(),
     isCategories = pathname.includes("categories"),
     [name, setName] = useState(item.name),
