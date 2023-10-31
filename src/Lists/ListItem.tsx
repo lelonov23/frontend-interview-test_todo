@@ -20,9 +20,8 @@ interface ListItemProps {
 
 export const ListItem: React.FC<ListItemProps> = ({ item }) => {
   const categories = useSelector(selectAllCategories),
-    [editModalActive, setEditModalActive] = useState(false)
-  let [removeModalActive, setRemoveModalActive] = useState(false);
-
+    [editModalActive, setEditModalActive] = useState(false),
+    [removeModalActive, setRemoveModalActive] = useState(false);
   return (
     <>
       <li className="list-item">
@@ -52,7 +51,7 @@ export const ListItem: React.FC<ListItemProps> = ({ item }) => {
           <button
             className="list-item-col2__btn"
             onClick={() => {
-              removeModalActive = true;
+              setRemoveModalActive(true);
             }}
           >
             <img src={remove} alt="remove" />

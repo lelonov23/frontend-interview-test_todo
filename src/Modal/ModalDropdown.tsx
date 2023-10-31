@@ -28,6 +28,16 @@ export const ModalDropdown: React.FC<ModalDropdownProps> = ({
       </div>
       {isActive && (
         <div className="dropdown-content">
+          <div
+              className="dropdown-item"
+              onClick={() => {
+                setSelected("");
+                setIsActive(false);
+              }}
+              key={'default'}
+            >
+            Выберите категорию
+          </div>
           {options.map((option) => (
             <div
               className="dropdown-item"
@@ -37,6 +47,7 @@ export const ModalDropdown: React.FC<ModalDropdownProps> = ({
               }}
               key={option.id}
             >
+              <option value="">Выберите категорию</option>
               {option.name}
             </div>
           ))}
