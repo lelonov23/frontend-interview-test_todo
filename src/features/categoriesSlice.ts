@@ -5,10 +5,13 @@ import { v4 as uuidv4 } from "uuid";
 /* APPLICATION */
 import { RootState } from "../app/store";
 
-export interface CategoriesState {
-  id: string;
+export interface Category {
   name: string;
   description: string;
+}
+
+export interface CategoriesState extends Category {
+  id: string;
 }
 
 const initialState: CategoriesState[] = [
@@ -33,13 +36,19 @@ export const categoriesSlice = createSlice({
   name: "categories",
   initialState,
   reducers: {
-    categoriesAdded: (state, action) => {
+    categoriesAdded: (
+      state: CategoriesState[], 
+      action: PayloadAction<Category>
+    ) => {
       state.push({
         id: uuidv4(),
         ...action.payload,
       });
     },
-    categoriesUpdated: (state, action) => {
+    categoriesUpdated: (
+      state: CategoriesState[], 
+      action: PayloadAction<CategoriesState>
+    ) => {
       const { id, name, description } = action.payload,
         existingCategory = state.find((category) => category.id === id);
 

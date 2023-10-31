@@ -47,7 +47,6 @@ export const ModalDropdown: React.FC<ModalDropdownProps> = ({
               }}
               key={option.id}
             >
-              <option value="">Выберите категорию</option>
               {option.name}
             </div>
           ))}
