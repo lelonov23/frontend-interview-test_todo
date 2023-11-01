@@ -12,6 +12,7 @@ import { ModalFooter } from "./ModalFooter";
 import { tasksUpdated } from "../features/tasksSlice";
 import { categoriesUpdated } from "../features/categoriesSlice";
 import { useAppDispatch } from "../app/hooks";
+import { AppDispatch } from "../app/store";
 
 interface ModalEditItemProps {
   item: {
@@ -29,7 +30,7 @@ export const ModalEditItem: React.FC<ModalEditItemProps> = ({
   active,
   setActive,
 }) => {
-  const dispatch = useAppDispatch(),
+  const dispatch: AppDispatch = useAppDispatch(),
     { pathname } = useLocation(),
     isCategories = pathname.includes("categories"),
     [name, setName] = useState(item.name),

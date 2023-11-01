@@ -9,6 +9,7 @@ import { ModalFooter } from "./ModalFooter";
 import { tasksRemoved, tasksClearedCategories } from "../features/tasksSlice";
 import { categoriesRemoved } from "../features/categoriesSlice";
 import { useAppDispatch } from "../app/hooks";
+import { AppDispatch } from "../app/store";
 
 interface ModalRemoveItemProps {
   item: {
@@ -26,7 +27,7 @@ export const ModalRemoveItem: React.FC<ModalRemoveItemProps> = ({
   active,
   setActive,
 }) => {
-  const dispatch = useAppDispatch(),
+  const dispatch: AppDispatch = useAppDispatch(),
     { pathname } = useLocation(),
     isCategories = pathname.includes("categories"),
     text = `Вы уверены, что хотите удалить ${isCategories ? "категорию" : "задачу"} "${item.name}"?`;
